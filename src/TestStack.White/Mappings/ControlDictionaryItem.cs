@@ -53,6 +53,11 @@ namespace TestStack.White.Mappings
             return Primary(testControlType, controlType, WindowsFramework.Wpf.FrameworkId());
         }
 
+        public static ControlDictionaryItem XamlPrimary(Type testControlType, ControlType controlType)
+        {
+            return Primary(testControlType, controlType, WindowsFramework.Xaml.FrameworkId());
+        }
+
         public static ControlDictionaryItem Win32Primary(Type testControlType, ControlType controlType)
         {
             return Primary(testControlType, controlType, WindowsFramework.Win32.FrameworkId());

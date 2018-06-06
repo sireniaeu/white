@@ -56,7 +56,7 @@ namespace TestStack.White.Mappings
             dictionaryItem.IsIdentifiedByName = true;
             items.Add(dictionaryItem);
 
-            items.AddFrameworkSpecificPrimary(ControlType.Text, typeof(Label), typeof(Label), typeof(WPFLabel), typeof(WPFLabel));
+            items.AddFrameworkSpecificPrimary(ControlType.Text, typeof(Label), typeof(Label), typeof(WPFLabel), typeof(WPFLabel), typeof(XamlLabel));
             items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(SilverlightComboBox));
             items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar), typeof(WPFStatusBar));
 
@@ -165,14 +165,18 @@ namespace TestStack.White.Mappings
 
         private static bool ControlTypeMatches(ControlType controlType, ControlDictionaryItem controlDictionaryItem)
         {
+            //Console.WriteLine("Type - {0} vs {1}, equals? = {2}", controlType.LocalizedControlType, controlDictionaryItem.ControlType.LocalizedControlType, controlDictionaryItem.ControlType.Equals(controlType));
             return controlDictionaryItem.ControlType.Equals(controlType);
         }
 
         private static bool FrameworkIdMatches(string frameWorkId, ControlDictionaryItem controlDictionaryItem)
         {
-            return string.IsNullOrEmpty(frameWorkId) ||
+            var match = string.IsNullOrEmpty(frameWorkId) ||
                 controlDictionaryItem.FrameworkId == frameWorkId ||
                 string.IsNullOrEmpty(controlDictionaryItem.FrameworkId);
+
+            //Console.WriteLine("FrameworkId? {0} vs {1} = {2}", frameWorkId, controlDictionaryItem.FrameworkId, match);
+            return match;
         }
 
         public virtual bool IsPrimaryControl(ControlType controlType, string className, string name)
