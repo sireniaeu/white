@@ -302,7 +302,7 @@ namespace TestStack.White.UIItems
             }
             catch
             {
-                Logger.Debug("Could not set focus on " + AutomationElement.Display());
+                Logger.Debug("Could not set focus on " + Autom8881111111111111ationElement.Display());
             }
         }
 

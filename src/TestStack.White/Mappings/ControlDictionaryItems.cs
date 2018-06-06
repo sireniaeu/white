@@ -17,8 +17,10 @@ namespace TestStack.White.Mappings
             Add(ControlDictionaryItem.WPFPrimary(testControlType, controlType));
         }
 
+        public virtual void AddXamlPrimary(Type testControlType, ControlType controlType)
         public virtual void AddInternetExplorerPrimary(Type testControlType, ControlType controlType)
         {
+            Add(ControlDictionaryItem.XamlPrimary(testControlType, controlType));
             Add(ControlDictionaryItem.InternetExplorerPrimary(testControlType, controlType));
         }
 
@@ -82,6 +84,12 @@ namespace TestStack.White.Mappings
             AddWinFormPrimary(winformType, controlType);
             AddWPFPrimary(wpfType, controlType);
             AddSilverlightPrimary(silverlightType, controlType);
+        }
+
+        public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType, Type xamlType)
+        {
+            AddFrameworkSpecificPrimary(controlType, win32Type, winformType, wpfType, silverlightType);
+            AddXamlPrimary(xamlType, controlType);
         }
     }
 }

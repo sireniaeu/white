@@ -4,6 +4,8 @@ namespace TestStack.White.UIItems
     {
         [FrameworkId("")]
         None,
+        [FrameworkId("XAML")]
+        Xaml,
         [FrameworkId("WPF")]
         Wpf,
         Win32,
