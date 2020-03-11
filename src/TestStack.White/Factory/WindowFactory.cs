@@ -149,7 +149,18 @@ namespace TestStack.White.Factory
         private void AddWindowsBy(List<Window> windows, ControlType controlType)
         {
             var children = Finder.Children(AutomationSearchCondition.ByControlType(controlType));
-            windows.AddRange(children.Select(childElement => Create(childElement, InitializeOption.NoCache, new NullWindowSession())));
+            var childWindows = children.Select(childElement =>
+            {
+                try
+                {
+                    return Create(childElement, InitializeOption.NoCache, new NullWindowSession());
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }).Where(w => w != null);
+            windows.AddRange(childWindows);
         }
 
         public static void AddSpecializedWindowFactory(ISpecializedWindowFactory specializedWindowFactory)
