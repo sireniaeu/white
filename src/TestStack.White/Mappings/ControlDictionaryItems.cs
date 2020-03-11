@@ -18,6 +18,9 @@ namespace TestStack.White.Mappings
         }
 
         public virtual void AddXamlPrimary(Type testControlType, ControlType controlType)
+        {
+            Add(ControlDictionaryItem.XamlPrimary(testControlType, controlType));
+        }
         public virtual void AddInternetExplorerPrimary(Type testControlType, ControlType controlType)
         {
             Add(ControlDictionaryItem.XamlPrimary(testControlType, controlType));
