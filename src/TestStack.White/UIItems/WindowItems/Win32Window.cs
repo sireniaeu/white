@@ -5,6 +5,7 @@ using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Factory;
 using TestStack.White.Sessions;
+using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.MenuItems;
 
@@ -21,6 +22,11 @@ namespace TestStack.White.UIItems.WindowItems
             : base(automationElement, option, windowSession)
         {
             this.windowFactory = windowFactory;
+        }
+
+        public Win32Window(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession())
+        {
+            this.windowFactory = WindowFactory.Desktop;
         }
 
         public override PopUpMenu Popup
