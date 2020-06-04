@@ -69,6 +69,7 @@ namespace TestStack.White.Mappings
             items.AddWPFPrimary(typeof(Image), ControlType.Image);
             items.AddSilverlightPrimary(typeof(Image), ControlType.Image);
             items.AddWin32Primary(typeof(Image), ControlType.Image);
+            items.AddWin32Primary(typeof(Win32Window), ControlType.Window);
 
             items.AddSilverlightPrimary(typeof(SilverlightChildWindow), ControlType.Window);
 
